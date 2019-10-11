@@ -7,6 +7,6 @@ urlpatterns = [
     path('principal/', index, name='liga_principal'),
     path('nuevo/', login_required( LigaCreate.as_view()), name='liga_create'),
     path('listar/', login_required(LigaList.as_view()), name='liga_list'),
-    path('editar/(?P<pk>\d+)/', login_required(LigaUpdate.as_view()), name='liga_edit'),
-    path('eliminar/(?P<pk>\d+)/', login_required(LigaDelete.as_view()), name='liga_delete'),
+    path('editar/<int:pk>/', login_required(LigaUpdate.as_view()), name='liga_edit'),
+    path('eliminar/<int:pk>/', login_required(LigaDelete.as_view()), name='liga_delete'),
 ]
