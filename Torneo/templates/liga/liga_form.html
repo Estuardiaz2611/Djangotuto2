@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="post" class="form-group card" style="width: 40rem;left:25%;padding:3rem;margin-top:4rem;">
+    {% csrf_token %}
+    <h1 style="text-align:center;color:#E67E22;">Agregar Liga</h1>
+    {{ form.as_p }}
+    <!--
+    <div class="row" style="padding: 0.5rem">
+        <div class="col-md-12">
+            <label form="{{form.nombre_liga.name}}">{{form.nombre_liga.label}}</label>
+            <input class="form-control" type="text" name="nombre_liga">
+        </div>
+    </div>
+    <div class="row" style="padding: 0.5rem;">
+        <div class="col-md-12">
+            <label form="{{form.genero.name}}">{{form.genero.label}}</label>
+            <input class="form-control" type="text" name="genero">
+        </div>
+    </div>
+    <div class="row" style="padding: 0.5rem">
+        <div class="col-md-12">
+            <label>Categoria</label>
+            <input class="form-control" type="text" name="categoria">
+        </div>
+    </div>
+    <div class="row" style="padding: 0.5rem">
+        <div class="col-md-12">
+            <label>Jugadores</label>
+            <input class="form-control" type="text" name="jugadores">
+        </div>
+    </div>
+    <div class="row" style="padding: 0.5rem">
+        <div class="col-md-12">
+            <label>Fecha Inicio</label>
+            <input class="form-control" type="text" name="fecha_inicio">
+        </div>
+    </div>-->
+    <button style="margin-top: 1rem;" class="btn btn-outline-info" type="submit">Guardar</button>
+</form>
+{% endblock %}

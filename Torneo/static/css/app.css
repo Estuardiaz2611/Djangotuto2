@@ -1,0 +1,17 @@
+img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.body{
+    top: -10px;
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+}
+
+body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}

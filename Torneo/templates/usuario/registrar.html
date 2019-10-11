@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-warning top body">
+    <a href="{% url 'login' %}" style="color: white; font-size: 2rem" class="navbar-brand">Li.Home</a>
+    <a href="{% url 'usuario:registrar' %}" style="color: rgb(126, 126, 126); font-size: 2rem">Registrarse</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <form method="post" class="form-group card" style="width: 40rem;left:25%;padding:3rem;margin-top:4rem;">
+    {% csrf_token %}
+        <h1 style="text-align:center;color:#E67E22;">Registro Usuario</h1>
+        <div class="row" style="padding: 0.5rem">
+            <div class="col-md-12">
+                <label>Nombre de Usuario</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+        </div>
+        <div class="row" style="padding: 0.5rem;">
+            <div class="col-md-12">
+                <label class="labelU">Nombre</label>
+                <input class="form-control" type="text" name="first_name">
+            </div>
+        </div>
+        <div class="row" style="padding: 0.5rem">
+            <div class="col-md-12">
+                <label>Apellido</label>
+                <input class="form-control" type="text" name="last_name">
+            </div>
+        </div>
+        <div class="row" style="padding: 0.5rem">
+            <div class="col-md-12">
+                <label>Correo</label>
+                <input class="form-control" type="text" name="email">
+            </div>
+        </div>
+        <div class="row" style="padding: 0.5rem">
+            <div class="col-md-12">
+                <label>Password</label>
+                <input class="form-control" type="password" name="password1">
+            </div>
+        </div>
+        <div class="row" style="padding: 0.5rem; color:red;">
+            <div class="col-md-12">
+                <label>(*) Confirmar Password</label>
+                <input class="form-control" type="password" name="password2">
+            </div>
+        </div>
+        <button style="margin-top: 1rem;" class="btn btn-outline-info" type="submit" value="Ok">Guardar</button>
+    </form>
+{% endblock %}

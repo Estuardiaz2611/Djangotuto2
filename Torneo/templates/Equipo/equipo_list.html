@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <div class="form-group">
+        <h1 style="text-align:center;padding: 4rem 0 3rem 0;color: #E67E22;">Listado de Equipos</h1>
+        <thead>
+            <tr class="table-warning h5">
+                <td style="text-align: center">#</td>
+                <td style="text-align: center">Nombre Equipo</td>
+                <td style="text-align: center">Siglas</td>
+                <td style="text-align: center">Jugadores</td>
+                <td style="text-align: center">Encargado</td>
+                <td style="text-align: center">Telefono</td>
+                <td style="text-align: center">Liga</td>
+                <td style="text-align: center">Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for equipo in object_list %}
+            <tr>
+                <td style="text-align: center">{{ equipo.id }}</td>
+                <td style="text-align: center">{{ equipo.nombre_equipo }}</td>
+                <td style="text-align: center">{{ equipo.siglas }}</td>
+                <td style="text-align: center">{{ equipo.jugadores }}</td>
+                <td style="text-align: center">{{ equipo.encargado }}</td>
+                <td style="text-align: center">{{ equipo.telefono }}</td>
+                <td style="text-align: center">{{ equipo.liga }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="{% url 'equipo:equipo_edit' equipo.id %}">EDITAR</a>
+                    <a class="btn btn-outline-danger" href="{% url 'equipo:equipo_delete' equipo.id %}">ELIMINAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h1 style="text-align: center">NO HAY EQUIPOS PARA MOSTRAR</h1>
+            {% endif %}
+        </tbody>
+    </div>
+</table>
+<ul style="margin-top:3rem;">
+    {% if page_obj.has_previous %}
+    <a class="btn btn-outline-success" href="?page={{ page_obj.previous_page_number }}">Regresar</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <a class="btn btn-outline-success" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+    {% endif %}
+</ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <div class="form-group">
+        <h1 style="text-align:center; padding: 4rem 0 3rem 0; color: #E67E22;">Listado de Ligas</h1>
+        <thead>
+            <tr class="table-warning h5">
+                <td style="text-align: center">#</td>
+                <td style="text-align: center">Nombre Liga</td>
+                <td style="text-align: center">Genero</td>
+                <td style="text-align: center">Categoria</td>
+                <td style="text-align: center">Jugadores</td>
+                <td style="text-align: center">Fecha Inicio</td>
+                <td style="text-align: center">Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for liga in object_list %}
+            <tr>
+                <td style="text-align: center">{{ liga.id }}</td>
+                <td style="text-align: center">{{ liga.nombre_liga }}</td>
+                <td style="text-align: center">{{ liga.genero }}</td>
+                <td style="text-align: center">{{ liga.categoria }}</td>
+                <td style="text-align: center">{{ liga.jugadores }}</td>
+                <td style="text-align: center">{{ liga.fecha_inicio }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="{% url 'liga:liga_edit' liga.id %}">EDITAR</a>
+                    <a class="btn btn-outline-danger" href="{% url 'liga:liga_delete' liga.id %}">ELIMINAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h1 style="text-align: center">NO HAY LIGAS PARA MOSTRAR</h1>
+            {% endif %}
+        </tbody>
+    </div>
+</table>
+<ul style="margin-top:3rem;">
+    {% if page_obj.has_previous %}
+        <a class="btn btn-outline-success" href="?page={{ page_obj.previous_page_number }}">Regresar</a>
+        {% endif %}
+    {% if page_obj.has_next %}
+        <a class="btn btn-outline-success" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+        {% endif %}
+</ul>
+{% endblock %}
